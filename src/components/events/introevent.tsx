@@ -6,13 +6,13 @@ const introevent = () => {
   return (
     <>
     <div className='bg-gradient-to-r from-slate-300 via-emerald-500 via-30% to-sky-500 relative'>
-      <div className='justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8'>
-        <div className='basis-5/12 grid grid-col-4 gap-y-14'>
-          <div className='text-5xl/8 text-white font-montserrat font-bold tracking-wide leading-[3.5rem] place-items-start'>
-            <h1 className='mb-1'>Unleash </h1>
-            <h1 className='mb-1'>enchanting </h1>
-            <h1 className='mb-1'>experiences</h1>
-            <h1 className='mb-1'>at your fingertips.</h1>
+      <div className='justify-between px-4 py-8 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8'>
+        <div className='basis-5/12 grid grid-col-4 gap-y-24'>
+          <div className='text-5xl/8 text-white font-montserrat font-semibold tracking-wide place-items-start'>
+            <h1 className='mb-5'>Unleash </h1>
+            <h1 className='mb-5'>enchanting </h1>
+            <h1 className='mb-5'>experiences</h1>
+            <h1 className='mb-5'>at your fingertips.</h1>
           </div>
           <div>
             <p className='text-l text-white font-montserrat font-normal'>Discover online and offline events at EventBud.</p>
