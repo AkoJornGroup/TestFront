@@ -1,5 +1,5 @@
 import React, {useState,useEffect}from 'react'
-import Data from "../../data/Eventcards.json"
+import Data from "../data/Eventcards.json"
 import Card from './eventcard'
 
 
@@ -51,27 +51,27 @@ const allevent = () => {
   //
 
   return (
-    <>
+    <div>
       <div className=' flex inline-block'>
-        <h1 className="text-4xl font-montserrat font-bold  ml-5">ALL EVENT</h1>
+        <h1 className="text-4xl font-montserrat font-bold  ">ALL EVENT</h1>
         <div className='flex flex-auto justify-end'>
           <button className='text-xl font-montserrat font-bold  ml-5 ' value="show">ViewAll</button>
         </div>
       </div>
       <div className='flex flex-col '>
-        <div className=' flex gap-4 ml-4'>
+        <div className=' flex gap-3 mt-5'>
           <button className={`border border-black rounded-full px-3 py-2 hover:bg-black hover:text-white`} value="Exhibition" onClick={handleclicktag}>Exhibition</button>
           <button  className ={`border border-black rounded-full px-3 py-2 hover:bg-black hover:text-white`} value="Concert" onClick={handleclicktag} >Concert</button>
           <button  className= {`border border-black rounded-full px-3 py-2 hover:bg-black hover:text-white`} value="Festival" onClick={handleclicktag}>Festival</button> 
           <button  className = {`border border-black rounded-full px-3 py-2 hover:bg-black hover:text-white`} value="Show" onClick={handleclicktag}>Show</button>
         </div>
-        <div id='2row5col' className='grid  grid-cols-4 grid-rows-2 md:grid-cols-4 sm:grid-cols-2 xs:grid-cols-1 '>
+        <div id='2row5col' className='grid grid-cols-5 grid-rows-2 md:grid-cols-5 sm:grid-cols-2 xs:grid-cols-1 gap-4 mt-8'>
         {filteredEvent1.map((eventcard) => (
           <Card image={eventcard.image} date={eventcard.date} name={eventcard.name} place={eventcard.place} />
         ))}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
