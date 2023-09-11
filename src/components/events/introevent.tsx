@@ -1,30 +1,46 @@
 import Slideshow from './slideshow';
-import React, { FC,useState } from 'react'
+import React, { FC,useState, useEffect } from 'react'
 import LiveSearch from "./LiveSearch"
-import Data from "../data/Eventcards.json"
-import { type } from 'os';
+import DataMock from "../data/Eventcards.json"
+import {getAllEvent} from "../../service/api"
+
 
 interface Props{}
 
-const introevent: FC<Props> = (props): JSX.Element =>{
-  const[results,setResults] = useState<{id:string; name :string}[]>
+const introevent: FC<Props> = (): JSX.Element =>{
+  const[results,setResults] = useState<{eventID:string; eventName :string}[]>
   ();
-  const [selecbar, setSelectBar] = useState<{id:string ; name : string}>();
+  const [selecbar, setSelectBar] = useState<{eventID:string ; eventName : string}>();
+  const[Data,setData] = useState([])
 
+  useEffect(() => {
+    getAllEvent()
+      .then(data => {
+        setData(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []);
+
+  console.log("Data",Data)
+  console.log("MockData",DataMock)
 type changeHandle = React.ChangeEventHandler<HTMLInputElement>;
   const handleChange: changeHandle = (e) => {
     const {target} = e;
     if (!target.value.trim()) return setResults([]);
 
     const filteredValue = Data.filter((d) => 
-      d.name.toLocaleLowerCase().match(target.value)
+      d.eventName.toLocaleLowerCase().match(target.value)
     );
+    console.log("FILTEREVENT ",filteredValue);
     setResults(filteredValue);
+    console.log("results ",results);
   }
 
   return (
     <>
-    <div className='bg-gradient-to-r from-slate-300 via-emerald-500 via-30% to-sky-500 static '>
+    <div className='bg-gradient-to-r from-slate-300 via-emerald-500 via-30% to-sky-500 relative '>
       <div className='justify-between px-4 py-8 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8 a ' >
         <div className='basis-5/12 grid grid-col-4 gap-y-24'>
           <div className='text-5xl/8 text-white font-montserrat font-semibold tracking-wide place-items-start'>
@@ -39,11 +55,20 @@ type changeHandle = React.ChangeEventHandler<HTMLInputElement>;
         </div>
         <div className='basis-7/12'>
           <Slideshow/>
-          
+        </div>
+      </div>
+      <div className='  flex justify-center relative  -top-6  '>
+        <div className=' absolute'>
+        <LiveSearch 
+         results={results} 
+         onChange={handleChange} 
+         renderItem={(item) => <p>{item.name}</p>}
+         onSelect={(item) => setSelectBar(item)}
+         value={selecbar?.name}
+        />
         </div>
       </div>
     </div>
-    
   </>
   );
 }

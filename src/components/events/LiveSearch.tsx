@@ -1,5 +1,8 @@
+import { it } from 'node:test';
 import { type } from 'os';
 import React, {FC, useCallback, useEffect, useRef, useState} from 'react';
+
+
 
 interface Props<T> {
     results?:T[];
@@ -55,6 +58,7 @@ const LiveSearch = < T extends object>({
         if(key === "Enter"){
             e.preventDefault();
             handleSelection(focusedIndex);
+            {navigate}('/event');
 
         }
         setFocusedIndex(nextIndexCount)
@@ -121,19 +125,21 @@ const LiveSearch = < T extends object>({
             rounded-bl rounded-br
              max-h-56 overflow-y-auto'>
                 {results.map((item,index) => {
+                    console.log("item",item)
                     return( 
-                    <div 
-                    key={index}
-                    onMouseDown={() => handleSelection(index)}
-                    ref = {index === focusedIndex ? resulContainer : null}
-                    style={{
-                        backgroundColor :
-                            index === focusedIndex ? "rgba(0,0,0,0.1)" : "rgba(0,0,0,0)", 
-                    }}
-                    className=' cursor-pointer hover: bg-black 
-                    hover: bg-opacity-10 p-2'>
-                        {renderItem(item)}
-                    </div>
+                             <div
+                            key={index}
+                            onMouseDown={() => handleSelection(index)}
+                            ref = {index === focusedIndex ? resulContainer : null}
+                            style={{
+                                backgroundColor :
+                                    index === focusedIndex ? "rgba(0,0,0,0.1)" : "rgba(0,0,0,0)", 
+                                }}
+                            className=' cursor-pointer hover: bg-black 
+                            hover: bg-opacity-10 p-2' >
+                                <a href="/event"><div>{item.eventName}</div></a>
+                        </div>
+                       
                 )
             })}
             </div>)}
