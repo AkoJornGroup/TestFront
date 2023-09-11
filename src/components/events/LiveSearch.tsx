@@ -111,7 +111,7 @@ const LiveSearch = < T extends object>({
             onChange={handleChange}
             type="text" 
             className='w-[600px] px-5 py-3 text-lg  rounded-lg border-2 border-gray-500
-             focus:border-gray-700 outline-none transition  ' 
+             focus:border-gray-700 outline-none transition  pl-10' 
              placeholder='  Search your query'
              />
 
