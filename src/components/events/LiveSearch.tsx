@@ -14,7 +14,6 @@ interface Props<T> {
 
 const LiveSearch = < T extends object>({
     results = [],
-    renderItem,
     onChange,
     onSelect,
     value,
@@ -37,7 +36,7 @@ const LiveSearch = < T extends object>({
         setShowResults(false);
     }, []);
 
-
+    
     const handleKeyDown: React.KeyboardEventHandler<HTMLDivElement> = (e) =>
     {
         const { key} = e ;
@@ -58,7 +57,6 @@ const LiveSearch = < T extends object>({
         if(key === "Enter"){
             e.preventDefault();
             handleSelection(focusedIndex);
-            {navigate}('/event');
 
         }
         setFocusedIndex(nextIndexCount)
@@ -124,10 +122,8 @@ const LiveSearch = < T extends object>({
             <div className='absolute mt-1 w-full p-2  bg-slate-50 shadow-lg 
             rounded-bl rounded-br
              max-h-56 overflow-y-auto'>
-                {results.map((item,index) => {
-                    console.log("item",item)
-                    return( 
-                             <div
+                {results.map((item,index) => 
+                            <div 
                             key={index}
                             onMouseDown={() => handleSelection(index)}
                             ref = {index === focusedIndex ? resulContainer : null}
@@ -135,13 +131,12 @@ const LiveSearch = < T extends object>({
                                 backgroundColor :
                                     index === focusedIndex ? "rgba(0,0,0,0.1)" : "rgba(0,0,0,0)", 
                                 }}
-                            className=' cursor-pointer hover: bg-black 
-                            hover: bg-opacity-10 p-2' >
-                                <a href="/event"><div>{item.eventName}</div></a>
+                             className=' cursor-pointer hover: bg-black 
+                             hover: bg-opacity-10 p-2' >
+                                <a href="/">{item.eventName}</a>
                         </div>
-                       
                 )
-            })}
+            }
             </div>)}
         </div>
     </div>

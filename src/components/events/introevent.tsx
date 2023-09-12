@@ -5,9 +5,9 @@ import DataMock from "../data/Eventcards.json"
 import {getAllEvent} from "../../service/api"
 
 
-interface Props{}
 
-const introevent: FC<Props> = (): JSX.Element =>{
+
+const introevent  = () =>{
   const[results,setResults] = useState<{eventID:string; eventName :string}[]>
   ();
   const [selecbar, setSelectBar] = useState<{eventID:string ; eventName : string}>();
@@ -23,8 +23,6 @@ const introevent: FC<Props> = (): JSX.Element =>{
       });
   }, []);
 
-  console.log("Data",Data)
-  console.log("MockData",DataMock)
 type changeHandle = React.ChangeEventHandler<HTMLInputElement>;
   const handleChange: changeHandle = (e) => {
     const {target} = e;
@@ -33,9 +31,7 @@ type changeHandle = React.ChangeEventHandler<HTMLInputElement>;
     const filteredValue = Data.filter((d) => 
       d.eventName.toLocaleLowerCase().match(target.value)
     );
-    console.log("FILTEREVENT ",filteredValue);
     setResults(filteredValue);
-    console.log("results ",results);
   }
 
   return (
