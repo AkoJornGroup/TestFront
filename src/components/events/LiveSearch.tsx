@@ -1,5 +1,3 @@
-import { it } from 'node:test';
-import { type } from 'os';
 import React, {FC, useCallback, useEffect, useRef, useState} from 'react';
 
 
@@ -122,8 +120,9 @@ const LiveSearch = < T extends object>({
             <div className='absolute mt-1 w-full p-2  bg-slate-50 shadow-lg 
             rounded-bl rounded-br
              max-h-56 overflow-y-auto'>
-                {results.map((item,index) => 
-                            <div 
+                {results.map((item,index) => {
+                    return(
+                        <div 
                             key={index}
                             onMouseDown={() => handleSelection(index)}
                             ref = {index === focusedIndex ? resulContainer : null}
@@ -135,6 +134,8 @@ const LiveSearch = < T extends object>({
                              hover: bg-opacity-10 p-2' >
                                 <a href="/">{item.eventName}</a>
                         </div>
+                    )
+                }
                 )
             }
             </div>)}

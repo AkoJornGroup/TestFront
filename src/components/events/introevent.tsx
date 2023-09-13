@@ -3,13 +3,13 @@ import React, { FC,useState, useEffect } from 'react'
 import LiveSearch from "./LiveSearch"
 import DataMock from "../data/Eventcards.json"
 import {getAllEvent} from "../../service/api"
+import Testlinkwithmap from './Testlinkwithmap';
 
 
 
 
 const introevent  = () =>{
-  const[results,setResults] = useState<{eventID:string; eventName :string}[]>
-  ();
+  const[results,setResults] = useState([])
   const [selecbar, setSelectBar] = useState<{eventID:string ; eventName : string}>();
   const[Data,setData] = useState([])
 
@@ -55,13 +55,14 @@ type changeHandle = React.ChangeEventHandler<HTMLInputElement>;
       </div>
       <div className='  flex justify-center relative  -top-6  '>
         <div className=' absolute'>
-        <LiveSearch 
+        {/* { <LiveSearch 
          results={results} 
          onChange={handleChange} 
          renderItem={(item) => <p>{item.name}</p>}
          onSelect={(item) => setSelectBar(item)}
          value={selecbar?.name}
-        />
+        /> } */}
+        <Testlinkwithmap/> 
         </div>
       </div>
     </div>
