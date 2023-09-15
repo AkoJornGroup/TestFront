@@ -23,7 +23,7 @@ const Testlinkwithmap = () =>{
     })
     const handleChange = (e) => {
         const filterData = product.filter((d) => 
-        d.eventName.toLocaleLowerCase().match(e.target.value))
+        d.eventName.toLocaleLowerCase().match(e.target.value.toLocaleLowerCase()))
         setResults(filterData)
         let lengthinput = e.target.value.length
         console.log("e",lengthinput)
