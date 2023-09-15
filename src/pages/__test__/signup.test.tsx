@@ -1,8 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import Signup from "../signup";
-// import userEvent from "@testing-library/user-event";
-// import { setupServer } from 'msw/node'
-// import { rest } from 'msw'
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'))
 
@@ -71,7 +68,7 @@ describe('SignUp', () => {
   //     submitButton.click();
   //     expect(screen.findByText(/Password does not match/)).toBeInTheDocument();
   //   });
-  //   it('should post data to backend when all fields are filled properly', async () => {
+  //   it('should display Sign up success when enter information properly', async () => {
   //     render(<Signup />);
   //     const emailInput = screen.getByLabelText('Email');
   //     const passwordInput = screen.getByLabelText('Password');
