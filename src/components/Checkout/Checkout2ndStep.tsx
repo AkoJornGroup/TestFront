@@ -39,7 +39,7 @@ const Component2 = (props:any) => {
 
     const checktime = () => {
         return(
-            <div className="">{parseInt(timestart)+7}:{eventData.startDateTime.split(/[T-]/)[3]?.split(/[:]/)[1]}-{parseInt(timeend)+7}:{eventData.endDateTime.split(/[T-]/)[3]?.split(/[:]/)[1]}</div>
+            <div className="">{parseInt(timestart)}:{eventData.startDateTime.split(/[T-]/)[3]?.split(/[:]/)[1]}-{parseInt(timeend)}:{eventData.endDateTime.split(/[T-]/)[3]?.split(/[:]/)[1]}</div>
         )
     }
 
