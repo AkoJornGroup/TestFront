@@ -7,7 +7,8 @@ const options: NextAuthOptions = {
         strategy: "jwt",
     },
     providers: [
-        CredentialsProvider({
+        process.env.VERCEL_ENV === "preview" ?
+         CredentialsProvider({
             id: "user",
             type: "credentials",
             credentials: {},
@@ -33,7 +34,7 @@ const options: NextAuthOptions = {
                     return signupuser;
                 }
                 return null;
-            },}),
+            },}):
         CredentialsProvider({
             id: "eventorganizer",
             type: "credentials",
