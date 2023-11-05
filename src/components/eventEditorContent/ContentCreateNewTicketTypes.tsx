@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import toast, { Toaster } from 'react-hot-toast'
 import { useSession } from 'next-auth/react'
 import { getEventDetail } from '~/service/api';
+import { a } from 'msw/lib/glossary-de6278a9'
 
 interface createNewTicketTypes {
     className: string;
@@ -67,10 +68,10 @@ const ContentCreateNewTicketTypes = () => {
         const createURL = `https://eventbud-jujiu2awda-uc.a.run.app/eo_create_ticket_type/${eoid}/${eventid}`;
         console.log('createURL', createURL);
 
-        const Name = document.getElementById('tt-name').value
-        const TicketPrice = document.getElementById('tt-ticketprice').value
-        const validDatetime = document.getElementById('tt-valid-date').value + 'T' + document.getElementById('tt-valid-time').value
-        const expiredDatetime = document.getElementById('tt-expired-date').value + 'T' + document.getElementById('tt-expired-time').value
+        const Name = (document.getElementById('tt-name') as HTMLInputElement).value
+        const TicketPrice = (document.getElementById('tt-ticketprice') as HTMLInputElement).value
+        const validDatetime = (document.getElementById('tt-valid-date') as HTMLInputElement).value + 'T' + (document.getElementById('tt-valid-time') as HTMLInputElement).value
+        const expiredDatetime = (document.getElementById('tt-expired-date') as HTMLInputElement).value + 'T' + (document.getElementById('tt-expired-time') as HTMLInputElement).value
         let QuantityAvailable = 0
         let NumberOfRows = 0
         let NumberOfCols = 0
@@ -87,11 +88,11 @@ const ContentCreateNewTicketTypes = () => {
 
         // 0 = zone, 1 = seat
         if (handleTicketType == 0) {
-            QuantityAvailable = document.getElementById('tt-qa').value
+            QuantityAvailable = (document.getElementById('tt-qa') as HTMLInputElement).value as unknown as number
         }
         else {
-            NumberOfRows = document.getElementById('tt-num-row').value
-            NumberOfCols = document.getElementById('tt-num-col').value
+            NumberOfRows = (document.getElementById('tt-num-row') as HTMLInputElement).value as unknown as number
+            NumberOfCols = (document.getElementById('tt-num-col') as HTMLInputElement).value as unknown as number
             QuantityAvailable = NumberOfRows * NumberOfCols
         }
 
