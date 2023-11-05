@@ -31,7 +31,8 @@ const profile = () => {
     }
 
     return (
-        <button onClick={() => signIn()} className="font-montserrat font-bold text-xl">Sign In</button>
+        // <button onClick={() => signIn()} className="font-montserrat font-bold text-xl">Sign In</button>
+        <a href="/api/auth/signin" className="font-montserrat font-bold text-xl">Sign In</a>
     )
 }
 
