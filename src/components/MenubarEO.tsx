@@ -7,13 +7,20 @@ type MenubarEOProps = {
   setContentId: (val: string) => void
 }
 
+interface User {
+  name?: string | null | undefined;
+  email?: string | null | undefined;
+  image?: string | null | undefined;
+  userID?: string | null | undefined;
+}
+
 const MenubarEO = ({setContentId}: MenubarEOProps) => {
   const router = useRouter()
   const { id } = router.query;
   const eventid = id as string
   const { data: session } = useSession()
   console.log("session: ", session)
-  const eoid = session?.user?.userID as string
+  const eoid = (session?.user as User)?.userID as string;
 
   const handlePublish = async (e: React.FormEvent) => {
     e.preventDefault()
