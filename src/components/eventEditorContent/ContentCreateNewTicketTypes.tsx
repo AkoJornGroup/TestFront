@@ -16,6 +16,13 @@ interface createNewTicketTypes {
     zoneSeatImage: string;
 }
 
+interface User {
+    name?: string | null | undefined;
+    email?: string | null | undefined;
+    image?: string | null | undefined;
+    userID?: string | null | undefined;
+}
+
 const ContentCreateNewTicketTypes = () => {
     const [handleCancelButton, sethandleCancelButton] = useState(false)
     const [handleTicketType, sethandleTicketType] = useState(0)
@@ -26,8 +33,8 @@ const ContentCreateNewTicketTypes = () => {
     const { id } = router.query;
     const eventid = id as string
     const { data: session } = useSession()
-    console.log("session: ", session)
-    const eoid = session?.user?.userID as string
+    console.log("session: ", session);
+    const eoid = (session?.user as User)?.userID as string;
 
     const handleButton = () => {
         sethandleCancelButton(true)
